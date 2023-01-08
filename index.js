@@ -49,3 +49,25 @@ function fetchApi(word){
 	});
 }
 
+searchInput.addEventListener("keyup", e => {
+	let word = e.target.value.replace(/\s+/g, ' ');
+	if (e.key == "Enter" && word) {
+		fetchApi(word);
+	}
+});
+
+volume.addEventListener("click", () => {
+	volume.style.color = "#4d59fb";
+	audio.play();
+	setTimeout(() =>{
+		volume.style.color = "#999";
+	}, 800);
+});
+
+removeIcon.addEventListener("click", ()=>{
+	searchInput.value = ' ';
+	searchInput.focus();
+	wrapper.classList.remove("active");
+	infoText.style.color = "#9a9a9a";
+	infoText.innerHTML = "Type any existing word and press enter to get meaning, example, synonyms, etc.";
+});
